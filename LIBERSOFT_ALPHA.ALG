@@ -304,7 +304,7 @@ Inicio
          caso 1
             menu_bibliotecario()
          caso 2
-            escreval("MEU CU CARALHO")
+            // menu_administrador()
          fimescolha
       fimse
 
