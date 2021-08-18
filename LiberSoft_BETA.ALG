@@ -43,13 +43,13 @@ inicio
          escreval()
          escreval("Seus livros emprestados são:")
          para contador de 0 ate 2 faca
-            se tempoRestante[contador] < 0 entao
-               escreval("- ", livro[contador, usuarioAtual], " -", abs(tempoRestante[contador]), " dia(s) atrasado(s).")
+            se tempoRestante[contador, usuarioAtual] < 0 entao
+               escreval("- ", livro[contador, usuarioAtual], " -", abs(tempoRestante[contador, usuarioAtual]), " dia(s) atrasado(s).")
             senao
-               se tempoRestante[contador] = 0 entao
+               se tempoRestante[contador, usuarioAtual] = 0 entao
                   escreval("- ", livro[contador, usuarioAtual], " - O tempo expira hoje.")
                senao
-                  escreval("- ", livro[contador, usuarioAtual], " -", tempoRestante[contador], " dia(s) restante(s).")
+                  escreval("- ", livro[contador, usuarioAtual], " -", tempoRestante[contador, usuarioAtual], " dia(s) restante(s).")
                fimse
             fimse
          fimpara
@@ -165,7 +165,7 @@ inicio
             leia(opcao)
 
             limpatela()
-            
+
             escolha opcao
             caso 1
                // modificar aluno
@@ -296,15 +296,9 @@ inicio
          ate opcao = 4
 
       caso 3
-         escreval("Add novos livros")
-         escreval("Digite o titulo do livro:")
-         leia(titulo)
-         escreval("Nome do autor: ")
-         leia(nomeAutor)
-         escreval("Digite a quantidade de exemplares:")
-         leia(qtdExemplares)
-
+         // gerenciar livros
       caso 4
+         // alterar senha
          senha[usuarioAtual] := alterar_senha(senha[usuarioAtual])
       caso 5
          login := Falso
@@ -416,36 +410,44 @@ fimfuncao
 Inicio
    // USUARIOS
 
-   nome[0] := "lays"
-   nome[1] := "david"
+   nome[0] := "adm"
+   nome[1] := "lays"
    nome[2] := ""
    nome[3] := ""
 
 
-   senha[0] := "b123"
-   senha[1] := "c123"
+   senha[0] := "123"
+   senha[1] := "124484"
    senha[2] := ""
    senha[3] := ""
 
-   cpf[0] := "99999999911"
-   cpf[1] := "12345678900"
+   cpf[0] := "70278002412"
+   cpf[1] := "12448437416"
    cpf[2] := ""
    cpf[3] := ""
 
    tipoUsuario[0] := 1
-   tipoUsuario[1] := 2
+   tipoUsuario[1] := 0
    tipoUsuario[2] := 0
    tipoUsuario[3] := 0
 
    // LIVROS
 
-   livro[0, 0] := "As Crônicas de Nárnia"
-   livro[1, 0] := "Harry Potter"
-   livro[2, 0] := "O Guia do Mochileiro das Galáxias"
+   livro[0, 1] := "Sniper de Elite"
+   livro[1, 1] := "À Espera de um Milagre"
+   livro[2, 1] := "O Universo numa Casca de Noz"
 
-   tempoRestante[0, 0] := 7
-   tempoRestante[1, 0] := 4
-   tempoRestante[2, 0] := 3
+   tempoRestante[0, 1] := 0
+   tempoRestante[1, 1] := 3
+   tempoRestante[2, 1] := 2
+
+   livro[0, 2] := "As Crônicas de Nárnia"
+   livro[1, 2] := "Harry Potter"
+   livro[2, 2] := "O Guia do Mochileiro das Galáxias"
+
+   tempoRestante[0, 2] := 7
+   tempoRestante[1, 2] := 4
+   tempoRestante[2, 2] := 3
 
    livro[0, 3] := "A Sutil Arte de Ligar o Foda-se"
    livro[1, 3] := "O Diário de um Banana"
@@ -514,8 +516,6 @@ Inicio
             menu_aluno()
          caso 1
             menu_bibliotecario()
-         caso 2
-            // menu_administrador()
          fimescolha
       fimse
 
